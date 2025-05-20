@@ -1,8 +1,8 @@
 #include <string>
 #include <vector>
-#include <tickerstreamTSDB.h>
+#include <influx_db_client.h>
 
-class DailyStockSchema : public DatabaseDrivers::InfluxDB::InfluxDBSchema {
+class DailyStockSchema : public InfluxDBClient::InfluxDBSchema {
 private:
 	static std::vector<std::string> _requiredTags;
 	static std::vector<std::string> _requiredStringFields;
@@ -11,7 +11,7 @@ private:
 	static std::vector<std::string> _requiredUnsignedIntFields;
 
 public:
-	bool verify(DatabaseDrivers::InfluxDB::InfluxDBPoint point) override
+	bool verify(InfluxDBClient::InfluxDBPoint point) override
 	{
 		return true;
 	}
